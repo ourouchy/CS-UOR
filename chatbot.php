@@ -16,28 +16,28 @@ function getBotResponse($message) {
         $responses = [
             "Bonjour ! Comment puis-je vous aider aujourd'hui ?",
             "Salut ! Que puis-je faire pour vous ?",
-            "Hello ! Je suis là pour répondre à vos questions !"
+            "Hello ! Je suis la pour repondre a vos questions !"
         ];
         return $responses[array_rand($responses)];
     }
     
     if (strpos($message, 'bonsoir') !== false) {
         $responses = [
-            "Bonsoir ! J'espère que vous passez une bonne soirée !",
+            "Bonsoir ! J'espere que vous passez une bonne soiree !",
             "Bonsoir ! Comment puis-je vous aider ce soir ?",
-            "Bonne soirée ! Que puis-je faire pour vous ?"
+            "Bonne soiree ! Que puis-je faire pour vous ?"
         ];
         return $responses[array_rand($responses)];
     }
     
     // Question 1: Nom du bot
     if (strpos($message, 'comment tu t\'appelles') !== false || strpos($message, 'quel est ton nom') !== false || strpos($message, 'qui es-tu') !== false) {
-        return "Je suis ChatBot, votre assistant virtuel ! Je suis là pour répondre à vos questions simples.";
+        return "Je suis ChatBot, votre assistant virtuel ! Je suis la pour repondre a vos questions simples.";
     }
     
     // Question 2: Météo
     if (strpos($message, 'météo') !== false || strpos($message, 'temps') !== false || strpos($message, 'il fait beau') !== false) {
-        return "Je ne peux pas consulter la météo en temps réel, mais j'espère qu'il fait beau chez vous ! ☀️";
+        return "Je ne peux pas consulter la meteo en temps reel, mais j'espere qu'il fait beau chez vous !";
     }
     
     // Question 3: Heure
@@ -47,42 +47,47 @@ function getBotResponse($message) {
     
     // Question 4: Couleur préférée
     if (strpos($message, 'couleur préférée') !== false || strpos($message, 'couleur favorite') !== false) {
-        return "Ma couleur préférée est le bleu ! Et vous, quelle est la vôtre ? 💙";
+        return "Je n'ai pas vraiment de couleur preferee. Et vous, quelle est la votre ?";
     }
     
     // Question 5: Âge
     if (strpos($message, 'quel âge') !== false || strpos($message, 'ton âge') !== false) {
-        return "Je suis un chatbot, donc je n'ai pas d'âge ! Mais j'ai été créé aujourd'hui ! 🤖";
+        return "Je suis un chatbot, donc je n'ai pas d'age ! Mais j'ai ete cree aujourd'hui !";
     }
     
     // Question 6: Hobbies
-    if (strpos($message, 'hobby') !== false || strpos($message, 'loisir') !== false || strpos($message, 'aimes-tu') !== false) {
-        return "J'aime discuter avec les gens et répondre à leurs questions ! C'est ma passion ! 😊";
+    if (strpos($message, 'hobby') !== false || strpos($message, 'hobbies') !== false || strpos($message, 'loisir') !== false || strpos($message, 'aimes-tu') !== false) {
+        return "J'aime discuter avec les gens et repondre a leurs questions ! C'est ma passion !";
     }
     
     // Au revoir
     if (strpos($message, 'au revoir') !== false || strpos($message, 'bye') !== false || strpos($message, 'à bientôt') !== false) {
-        return "Au revoir ! N'hésitez pas à revenir me parler bientôt ! 👋";
+        return "Au revoir ! N'hesitez pas a revenir me parler bientot !";
     }
     
     // Merci
     if (strpos($message, 'merci') !== false || strpos($message, 'thanks') !== false) {
-        return "De rien ! Je suis content de pouvoir vous aider ! 😊";
+        return "De rien ! Je suis content de pouvoir vous aider !";
+    }
+    
+    // Réponses aux couleurs
+    if (preg_match('/^(rouge|bleu|vert|jaune|noir|blanc|rose|violet|orange|gris|marron)$/i', trim($message))) {
+        return "Ah, " . ucfirst(trim($message)) . " ! C'est une belle couleur ! Merci de me l'avoir dit.";
     }
     
     // Réponse par défaut
     $defaultResponses = [
-        "Je ne suis pas sûr de comprendre. Pouvez-vous reformuler ?",
-        "Hmm, je ne connais pas la réponse à cette question. Essayez de me dire bonjour ou demandez-moi mon nom !",
+        "Je ne suis pas sur de comprendre. Pouvez-vous reformuler ?",
+        "Hmm, je ne connais pas la reponse a cette question. Essayez de me dire bonjour ou demandez-moi mon nom !",
         "Je suis encore en apprentissage ! Posez-moi des questions simples comme 'Quelle heure est-il ?' ou 'Quel est ton nom ?'",
-        "Désolé, je ne comprends pas. Vous pouvez me demander l'heure, mon nom, ou simplement me dire bonjour !"
+        "Desole, je ne comprends pas. Vous pouvez me demander l'heure, mon nom, ou simplement me dire bonjour !"
     ];
     
     return $defaultResponses[array_rand($defaultResponses)];
 }
 
 // Traitement des messages AJAX
-if ($_POST['action'] === 'send_message') {
+if (isset($_POST['action']) && $_POST['action'] === 'send_message') {
     $userMessage = $_POST['message'];
     $botResponse = getBotResponse($userMessage);
     
@@ -94,13 +99,13 @@ if ($_POST['action'] === 'send_message') {
 }
 
 // Récupérer l'historique
-if ($_POST['action'] === 'get_history') {
+if (isset($_POST['action']) && $_POST['action'] === 'get_history') {
     echo json_encode($_SESSION['chat_history']);
     exit;
 }
 
 // Vider l'historique
-if ($_POST['action'] === 'clear_history') {
+if (isset($_POST['action']) && $_POST['action'] === 'clear_history') {
     $_SESSION['chat_history'] = [];
     echo json_encode(['success' => true]);
     exit;
@@ -121,8 +126,8 @@ if ($_POST['action'] === 'clear_history') {
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
             min-height: 100vh;
             padding: 20px;
         }
@@ -131,13 +136,12 @@ if ($_POST['action'] === 'clear_history') {
             max-width: 800px;
             margin: 0 auto;
             background: white;
-            border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border: 1px solid #ccc;
             overflow: hidden;
         }
 
         .header {
-            background: linear-gradient(45deg, #4CAF50, #45a049);
+            background: #333;
             color: white;
             padding: 20px;
             text-align: center;
@@ -172,16 +176,14 @@ if ($_POST['action'] === 'clear_history') {
         }
 
         .message.user .message-content {
-            background: #007bff;
+            background: #333;
             color: white;
-            border-bottom-right-radius: 5px;
         }
 
         .message.bot .message-content {
-            background: white;
+            background: #f0f0f0;
             color: #333;
             border: 1px solid #ddd;
-            border-bottom-left-radius: 5px;
         }
 
         .message-time {
@@ -209,30 +211,27 @@ if ($_POST['action'] === 'clear_history') {
         }
 
         #messageInput:focus {
-            border-color: #007bff;
+            border-color: #333;
         }
 
         #sendBtn {
             padding: 12px 25px;
-            background: #007bff;
+            background: #333;
             color: white;
             border: none;
-            border-radius: 25px;
             cursor: pointer;
             font-size: 16px;
-            transition: background-color 0.3s;
         }
 
         #sendBtn:hover {
-            background: #0056b3;
+            background: #555;
         }
 
         #clearBtn {
             padding: 8px 15px;
-            background: #dc3545;
+            background: #666;
             color: white;
             border: none;
-            border-radius: 15px;
             cursor: pointer;
             font-size: 12px;
             position: absolute;
@@ -264,7 +263,7 @@ if ($_POST['action'] === 'clear_history') {
         }
 
         .suggestion-btn:hover {
-            background: #007bff;
+            background: #333;
             color: white;
         }
 
@@ -305,35 +304,80 @@ if ($_POST['action'] === 'clear_history') {
                 max-width: 85%;
             }
         }
-    </style>
+        /* Style pour la barre de navigation */
+#site-nav {
+  background: #333;
+  padding: 10px 0;
+  margin-bottom: 20px;
+}
+
+#site-nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center; /* centre les éléments */
+  gap: 12px; /* espace entre les liens */
+  padding: 0;
+  margin: 0;
+}
+
+#site-nav li {
+  display: inline;
+}
+
+#site-nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600; /* un peu moins gras */
+  font-size: 14px; /* texte plus petit */
+  padding: 6px 10px; /* réduit l’espace */
+  border-radius: 4px;
+  transition: background 0.3s;
+  display: flex;
+  align-items: center; /* centre verticalement le texte */
+  height: 30px; /* fixe la hauteur */
+}
+</style>
 </head>
 <body>
     <div class="container">
+<nav id="site-nav">
+    <ul>
+      <li><a href="index.html">Page HTML (chap. 2)</a></li>
+      <li><a href="cv-css.html" aria-current="page">Page stylée (chap. 3)</a></li>
+      <li><a href="cv-tailwind.html">Page responsive (bonus)</a></li>
+      <li><a href="formulaire.php">Formulaire</a></li>
+      <li><a href="formulaire_nosql.php">Formulaire Nosql (bonus)</a></li>
+      <li><a href="cv-js.html">Page interactive</a></li>
+      <li><a href="chatbot.php">Chatbot</a></li>
+
+    </ul>
+  </nav>
+
         <div class="header">
             <button id="clearBtn" onclick="clearChat()">Effacer</button>
-            <h1>🤖 Mini ChatBot</h1>
+            <h1>Mini ChatBot</h1>
             <p>Votre assistant virtuel personnel</p>
         </div>
         
         <div class="chat-container" id="chatContainer">
             <div class="message bot">
                 <div class="message-content">
-                    Bonjour ! Je suis votre ChatBot. Je peux répondre à vos salutations et à plusieurs questions simples. Tapez votre message ci-dessous ! 😊
+                    Bonjour ! Je suis votre ChatBot. Je peux repondre a vos salutations et a plusieurs questions simples. Tapez votre message ci-dessous !
                 </div>
             </div>
         </div>
         
         <div class="typing-indicator" id="typingIndicator">
-            🤖 <span class="typing-dots"><span></span><span></span><span></span></span> ChatBot est en train d'écrire...
+            ChatBot est en train d'ecrire...
         </div>
         
         <div class="suggestions">
-            <h4>💡 Suggestions :</h4>
+            <h4>Suggestions :</h4>
             <span class="suggestion-btn" onclick="sendSuggestion('Bonjour')">Bonjour</span>
             <span class="suggestion-btn" onclick="sendSuggestion('Comment tu t\'appelles ?')">Ton nom</span>
             <span class="suggestion-btn" onclick="sendSuggestion('Quelle heure est-il ?')">L'heure</span>
             <span class="suggestion-btn" onclick="sendSuggestion('Quel est ton âge ?')">Ton âge</span>
-            <span class="suggestion-btn" onclick="sendSuggestion('Quelle est ta couleur préférée ?')">Couleur préférée</span>
+            <span class="suggestion-btn" onclick="sendSuggestion('Quelle est ta couleur préférée ?')">Couleur preferee</span>
             <span class="suggestion-btn" onclick="sendSuggestion('Quels sont tes hobbies ?')">Tes hobbies</span>
         </div>
         
@@ -358,8 +402,6 @@ if ($_POST['action'] === 'clear_history') {
             .then(response => response.json())
             .then(history => {
                 const chatContainer = document.getElementById('chatContainer');
-                chatContainer.innerHTML = '<div class="message bot"><div class="message-content">Bonjour ! Je suis votre ChatBot. Je peux répondre à vos salutations et à plusieurs questions simples. Tapez votre message ci-dessous ! 😊</div></div>';
-                
                 history.forEach(chat => {
                     addMessageToChat(chat.user, 'user', chat.time);
                     addMessageToChat(chat.bot, 'bot', chat.time);
