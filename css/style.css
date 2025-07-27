@@ -1,0 +1,161 @@
+/* =======================================================================
+   CV – Chapitre 3 (float / clear / span / div)
+   - max-width du CV (wrapper #page)
+   - séparation claire des entrées de formation
+   - photo + nav conservées
+   ======================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;600&display=swap');
+
+/* ---------- Variables ---------- */
+:root{
+  --text:#222;
+  --muted:#555;
+  --primary:#000;
+  --highlight:#ffe08a;
+  --border:#ddd;
+  --page-bg:#fff;
+  --body-bg:#f5f5f5;
+  --maxw:900px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  background:var(--body-bg);
+  color:var(--text);
+  font-family:'Inter', system-ui, sans-serif;
+  line-height:1.5;
+  padding:2rem 1.5rem;
+}
+
+/* ---------- Conteneur max-width ---------- */
+#page{
+  max-width: var(--maxw);
+  margin: 0 auto;
+  background: var(--page-bg);
+  padding: 2.5rem 2rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,.06);
+  border: 1px solid #eee;
+  border-radius: .5rem;
+}
+
+/* ---------- NAV ---------- */
+#site-nav ul{
+  list-style:none;
+  margin:0 0 1.5rem 0;
+  padding:0;
+}
+#site-nav li{
+  display:inline-block;
+  margin-right:1.25rem;
+}
+#site-nav a{
+  text-decoration:none;
+  color:#2563eb;
+  font-weight:600;
+}
+#site-nav a[aria-current="page"]{color:#1e40af;}
+#site-nav a:hover{text-decoration:underline;}
+
+/* ---------- HEADER ---------- */
+header#top{
+  text-align:center;
+  margin-bottom:1.8rem;
+}
+header#top h1{
+  font-family:'Libre Baskerville', serif;
+  font-size:2.1rem;
+  letter-spacing:.05em;
+  margin-bottom:.6rem;
+}
+header#top .contact{
+  font-size:.9rem;
+  color:var(--muted);
+  line-height:1.4;
+}
+header#top .contact a{color:var(--muted);text-decoration:none;}
+header#top .contact a:hover{text-decoration:underline;}
+
+/* ---------- PORTRAIT ---------- */
+#portrait{
+  float:left;                 /* << float */
+  width:160px;
+  margin:0 1.5rem 1rem 0;
+  text-align:center;
+}
+#portrait img{
+  width:100%;
+  border-radius:.5rem;
+  display:block;
+}
+#portrait figcaption{
+  font-style:italic;
+  color:var(--muted);
+  font-size:.8rem;
+  margin-top:.4rem;
+}
+
+/* ---------- SECTIONS ---------- */
+.section{
+  margin-bottom:2.2rem;
+  padding-bottom:1.8rem;
+  border-bottom:1px solid var(--border);
+}
+.section h2{
+  font-family:'Libre Baskerville', serif;
+  font-size:1.05rem;
+  letter-spacing:.15em;
+  color:var(--primary);
+  margin-bottom:1rem;
+}
+
+/* ---------- ENTRIES (2 colonnes flottantes) ---------- */
+.entry{ margin-bottom:1.4rem; }
+.entry .left{
+  float:left;                 /* << float */
+  width:60%;
+  padding-right:2%;
+}
+.entry .right{
+  float:left;                 /* << float */
+  width:38%;
+  text-align:right;
+}
+.clearfix{ clear:both; }      /* << clear */
+
+/* ---------- Listes ---------- */
+ul.bullets{
+  margin:.6rem 0 0 1.1rem;
+  padding:0;
+}
+ul.bullets li{
+  margin-bottom:.35rem;
+  list-style:disc;
+}
+
+/* ---------- Typo fine ---------- */
+strong{font-weight:600;}
+em{font-style:italic;}
+span.dates{font-style:italic;color:var(--muted);}
+span.stack{color:var(--muted);font-size:.9rem;}
+span.highlight{background:var(--highlight);padding:0 .25em;border-radius:.2em;}
+span.note{color:var(--muted);font-size:.85rem;}
+
+/* ---------- Footer ---------- */
+footer{
+  text-align:center;
+  font-size:.8rem;
+  color:var(--muted);
+  margin-top:2rem;
+}
+
+/* ---------- Impression ---------- */
+@media print{
+  body{background:#fff;padding:0;font-size:11pt;}
+  #page{box-shadow:none;border:0;padding:0;max-width:none;}
+  #site-nav,#portrait{display:none;}
+  a{color:#000;text-decoration:none;}
+  .section{border-bottom:0;padding-bottom:1.2rem;margin-bottom:1.6rem;}
+}
+
+

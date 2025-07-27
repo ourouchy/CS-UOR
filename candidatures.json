@@ -1,0 +1,16 @@
+[
+    {
+        "entreprise": "Deloitte",
+        "poste": "Chef de projet",
+        "date": "2025-07-03",
+        "statut": "Refus\u00e9",
+        "lien": "https:\/\/www.deloitte.com\/fr\/fr\/careers.html"
+    },
+    {
+        "entreprise": "CAPGEMINI",
+        "poste": "developpeur backend",
+        "date": "2025-07-11",
+        "statut": "En attente",
+        "lien": "https:\/\/www.deloitte.com\/fr\/fr\/careers.html"
+    }
+]

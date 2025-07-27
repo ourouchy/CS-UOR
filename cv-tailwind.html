@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>CV – Moad Abaarour (Tailwind)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CV de Moad Abaarour — version responsive Tailwind CSS.">
+  <meta name="author" content="Moad Abaarour">
+
+  <!-- Métadonnées optionnelles -->
+  <meta property="og:title" content="CV – Moad Abaarour (Tailwind)">
+  <meta property="og:description" content="Version responsive avec Tailwind CSS.">
+  <meta property="og:type" content="profile">
+  <meta property="og:url" content="https://ourouchy.alwaysdata.net/cv-tailwind.html">
+  <meta property="og:image" content="https://ourouchy.github.io/Portfolio/og-image.jpg">
+  <meta name="DC.title" content="CV – Moad Abaarour (Tailwind)">
+  <meta name="DC.creator" content="Moad Abaarour">
+  <meta name="DC.language" content="fr">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter','system-ui','sans-serif'], serif: ['Libre Baskerville','serif'] },
+          maxWidth: { cv: '900px' }
+        }
+      }
+    }
+  </script>
+
+
+</head>
+<body class="bg-gray-100 text-gray-900 font-sans">
+
+  <!-- Wrapper -->
+  <div class="max-w-cv mx-auto bg-white shadow-md border border-gray-200 rounded-lg px-6 sm:px-10 py-8">
+
+    <!-- NAV -->
+    <nav id="site-nav" class="mb-6 text-sm">
+      <ul class="flex flex-wrap gap-4">
+        <li><a href="index.html" class="text-blue-600 hover:underline">Page HTML (chap. 2)</a></li>
+        <li><a href="cv-css.html" class="text-blue-600 hover:underline">Page stylée (chap. 3)</a></li>
+        <li><a href="cv-tailwind.html" aria-current="page" class="font-semibold text-blue-800">Page responsive (bonus)</a></li>
+        <li><a href="formulaire.php" class="text-blue-600 hover:underline">Formulaire</a></li>
+        <li><a href="formulaire_nosql.php" class="text-blue-600 hover:underline">Formulaire NoSql (Bonus)</a></li>
+   
+      </ul>
+    </nav>
+
+    <!-- HEADER -->
+    <header class="text-center mb-8">
+      <h1 class="font-serif text-3xl tracking-wide mb-2">MOAD ABAAROUR</h1>
+      <p class="text-sm text-gray-600 leading-5">
+        (+33) 06 82 47 03 61 • moad.ab-99@hotmail.com • Français / Anglais / Arabe / Japonais<br>
+        <a href="https://ourouchy.github.io/Portfolio/" class="text-blue-600 hover:underline">https://ourouchy.github.io/Portfolio/</a>
+      </p>
+    </header>
+
+    <!-- PORTRAIT -->
+    <figure class="w-36 sm:w-40 md:w-44 float-left mr-6 mb-6 text-center">
+      <img src="images/portrait-moad.jpg" alt="Portrait de Moad Abaarour" class="w-full rounded-md">
+      <figcaption class="italic text-gray-500 text-xs mt-1">Développeur Full Stack</figcaption>
+    </figure>
+
+    <!-- SECTION FORMATION -->
+    <section id="formation" class="pb-6 mb-6 border-b border-gray-200 clear-both">
+      <h2 class="font-serif text-sm tracking-widest text-gray-900 mb-4">FORMATION</h2>
+
+      <!-- Entrée CFA -->
+      <div class="md:flex md:justify-between md:gap-6 mb-4">
+        <div class="md:w-1/2">
+          <p class="font-semibold">CFA INSTA</p>
+          <p class="italic text-sm text-gray-600">à distance</p>
+          <p>Bachelor Concepteur Développeur d’Applications<br>
+             Contrat d’apprentissage<br>
+             Rythme : 1 jour formation, 4 jours entreprise</p>
+        </div>
+        <div class="md:w-1/2 md:text-right mt-2 md:mt-0">
+          <span class="italic text-gray-600">octobre 2023 – 2026</span>
+        </div>
+      </div>
+
+      <!-- Entrée Université -->
+      <div class="md:flex md:justify-between md:gap-6">
+        <div class="md:w-1/2">
+          <p class="font-semibold">Université Paris 8</p>
+          <p class="italic text-sm text-gray-600">à distance</p>
+          <p>Licence Informatique</p>
+        </div>
+        <div class="md:w-1/2 md:text-right mt-2 md:mt-0">
+          <span class="italic text-gray-600">2023 – 2026</span><br>
+          <span class="text-gray-500 text-xs">En cours, dernière année à partir de septembre</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION PROJETS -->
+    <section id="projets" class="pb-6 mb-6 border-b border-gray-200">
+      <h2 class="font-serif text-sm tracking-widest text-gray-900 mb-4">PROJETS</h2>
+
+      <!-- Polyglow -->
+      <article class="mb-6">
+        <div class="md:flex md:justify-between md:gap-6">
+          <div class="md:w-1/2">
+            <p class="font-semibold">Polyglow</p>
+            <p class="italic text-sm text-gray-600">Développeur Full Stack</p>
+          </div>
+          <div class="md:w-1/2 md:text-right mt-2 md:mt-0">
+            <span class="italic text-gray-600">Avril 2025 – Septembre 2025</span><br>
+            <span class="text-gray-600 text-sm">Django • React • TypeScript • PostgreSQL</span>
+          </div>
+        </div>
+        <ul class="list-disc pl-5 mt-2 text-sm space-y-1">
+          <li>Plateforme de tutorat multi‑rôles avec dashboards personnalisés.</li>
+          <li>Réservation en temps réel (React FullCalendar), gestion des disponibilités.</li>
+          <li>Paiement sécurisé (Stripe) + wallet.</li>
+          <li>Messagerie instantanée & notifications (WebSocket, Django Channels).</li>
+          <li>Processus d’inscription enseignants en 5 étapes avec validation.</li>
+          <li>Validation automatique des cours sous 24h.</li>
+        </ul>
+      </article>
+
+      <!-- Friandos -->
+      <article>
+        <div class="md:flex md:justify-between md:gap-6">
+          <div class="md:w-1/2">
+            <p class="font-semibold">Friandos</p>
+            <p class="italic text-sm text-gray-600">Développeur Full Stack</p>
+          </div>
+          <div class="md:w-1/2 md:text-right mt-2 md:mt-0">
+            <span class="italic text-gray-600">Août 2024 – Janvier 2025</span><br>
+            <span class="text-gray-600 text-sm">Laravel • Vue.js • Alpine.js • MySQL</span>
+          </div>
+        </div>
+        <ul class="list-disc pl-5 mt-2 text-sm space-y-1">
+          <li>Plateforme e‑commerce MECL destinée aux grandes boutiques de retail.</li>
+          <li>Architecture découplée : dashboard admin (Vue.js) + API REST.</li>
+          <li>CRUD complet (produits, marques, promos, médias).</li>
+          <li>Filtrage performant pour des milliers d’articles.</li>
+          <li>UI avec Blade, Alpine.js, Tailwind CSS.</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- SECTION COMPÉTENCES -->
+    <section id="competences" class="pb-2">
+      <h2 class="font-serif text-sm tracking-widest text-gray-900 mb-4">COMPÉTENCES</h2>
+
+      <div class="md:flex md:justify-between md:gap-6 mb-2">
+        <div class="md:w-1/2 font-semibold">Langages informatiques</div>
+        <div class="md:w-1/2 md:text-right">PHP, JavaScript, TypeScript, Python, CommonLisp</div>
+      </div>
+
+      <div class="md:flex md:justify-between md:gap-6 mb-2">
+        <div class="md:w-1/2 font-semibold">Frameworks &amp; Libraries</div>
+        <div class="md:w-1/2 md:text-right">Laravel, Vue.js, React, Django, Alpine.js</div>
+      </div>
+
+      <div class="md:flex md:justify-between md:gap-6 mb-2">
+        <div class="md:w-1/2 font-semibold">Bases de données</div>
+        <div class="md:w-1/2 md:text-right">MySQL, PostgreSQL</div>
+      </div>
+
+      <div class="md:flex md:justify-between md:gap-6 mb-2">
+        <div class="md:w-1/2 font-semibold">Outils &amp; Technologies</div>
+        <div class="md:w-1/2 md:text-right">JetBrains, Cursor, Git CLI, Stripe API, WebSocket</div>
+      </div>
+
+      <div class="md:flex md:justify-between md:gap-6">
+        <div class="md:w-1/2 font-semibold">Protocols &amp; APIs</div>
+        <div class="md:w-1/2 md:text-right">REST, JSON, WebRTC</div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="text-center text-xs text-gray-500 mt-8">
+      &copy; <span id="year"></span> Moad Abaarour
+    </footer>
+
+  </div><!-- /wrapper -->
+
+  <script>
+    // année auto
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
